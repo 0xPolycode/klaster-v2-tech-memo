@@ -62,7 +62,7 @@ account is a generic smart contract. Each one of those cases has special feature
 
 ### Cross-Chain Accounts
 
-![Accounts](https://github.com/0xPolycode/klaster-v2-tech-memo/assets/129866940/80ca71af-23d2-4ad6-8758-d4e7dcaf62ed)
+![291327180-e31a3db5-222e-4867-bd6c-7fbfe0be028e](https://github.com/0xPolycode/klaster-v2-tech-memo/assets/129866940/71c2b76c-a551-4ae2-8f06-2b6d9deac066)
 
 Cross-chain accounts have several user benefits:
 
