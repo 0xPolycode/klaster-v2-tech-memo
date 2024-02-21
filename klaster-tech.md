@@ -104,4 +104,13 @@ models can be developed. Some ideas include:
 * Payment with credit cards/Apple Pay/Google Pay - Klaster Nodes can accept traditional payment methods for gas and cover the on-chain costs for the user.
 * Free transactions - Klaster Nodes can reward users with "free" initial transactions, to ease the onboarding process.
 
+## Liveness Guarantees
+
+Klaster protocol must maintain liveness guarantees for its users. This is achieved through the use of the Klaster Token. The "Solvers" who execute transactions on behalf of other users
+need to stake their Klaster token into Klaster smart contracts. For every transaction that reaches the Klaster mempool, a PoS system is used to determine which Solver will execute the 
+transaction. If the Solver is not available or has an insufficient gas balance to execute the transaction, they are slashed. If they are available and can execute the transaction, they are
+rewarded.Depending on how much Klaster a node has staked, they increase the chance of being selected to execute a transaction. A proposal on how to achieve this through the usage of 
+Chainlink VRF will be presented in a separate document.
+
+
 
