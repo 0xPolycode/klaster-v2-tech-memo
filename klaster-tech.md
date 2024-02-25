@@ -52,7 +52,7 @@ The flow of a Klaster transaction is the following:
 4. The transaction is picked up by the Klaster Node.
 5. The Klaster node calls the `execute()` function on the Klaster Singleton contract on the desired chain.
 6. The Klaster Singleton contract verifies cryptographically that the transaction was actually signed by the owner of the cross-chain account.
-7. If valid, the Klaster signleton contract executes the user desired action.
+7. If valid, the Klaster Singleton contract executes the user desired action.
 
 ![Klaster System](https://github.com/0xPolycode/klaster-v2-tech-memo/assets/129866940/becbf97f-e7c9-4bdc-92b4-ca1cfd5eba8d)
 
