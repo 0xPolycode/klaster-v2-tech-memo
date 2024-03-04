@@ -104,6 +104,14 @@ models can be developed. Some ideas include:
 * Payment with credit cards/Apple Pay/Google Pay - Klaster Nodes can accept traditional payment methods for gas and cover the on-chain costs for the user.
 * Free transactions - Klaster Nodes can reward users with "free" initial transactions, to ease the onboarding process.
 
+## Klaster 
+
+Klaster greatly simplifies operations for users on multiple blockchains.
+
+![KlasterWW](https://github.com/0xPolycode/klaster-v2-tech-memo/assets/129866940/3a78a4ed-dd5e-4fee-9dc9-c30ede511664)
+
+
+
 ## Liveness Guarantees
 
 Klaster protocol must maintain liveness guarantees for its users. This is achieved through the use of the Klaster Token. The "Solvers" who execute transactions on behalf of other users
