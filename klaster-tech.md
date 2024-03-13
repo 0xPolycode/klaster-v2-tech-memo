@@ -110,7 +110,42 @@ Klaster greatly simplifies operations for users on multiple blockchains.
 
 ![KlasterWW](https://github.com/0xPolycode/klaster-v2-tech-memo/assets/129866940/3a78a4ed-dd5e-4fee-9dc9-c30ede511664)
 
+## Node Economics
 
+Running a Klaster Node is a profit-generating activity for the node operators. They execute transactions on behalf of users & for that they charge a premium. Every node will decide which assets, on which networks, they accept as payments. Additionally, every node will decide which networks they're willing to execute transactions on.
+
+Let's give an example: An operator is running a Klaster node and they set the following parameters:
+
+* **Accepting**: USDC, USDT, stETH, LINK
+* **Supported Networks**: Ethereum, Polygon, zkSync, Optimism, Base, Scroll, BSC, Avalanche C-Chain, Arbitrum
+
+The user creates an execution intent with the following parameters:
+* Call `swap()` function on the Uniswap contract on Base
+* Pay for transaction in USDC on Optimism
+* Set a maximum gas limit of 250.000
+* Set a maximum gas price of 1 gwei
+
+The node creates a commitment and signs it cryptographically. Let's assume that the price of ETH at the time of the transaction is $4100. The commitment may look like this:
+
+* Maximum gas limit 250.000
+* Maximum gas price 1 gwei
+* Charge a price of 0.00025 ETH for a transaction
+* Calculated in USDC, the price is 1,025 USDC
+* Charge a 10% execution premium - total price is 1,1275
+
+The node will create the trnasaction and payment data for signing and return it to the user. The node would also sign this commitment cryptographically and return it to the user. The user would then either accept or decline the transaction. 
+
+If the user should accept the transaction, they would perform a `personal_sign` operation on the data. The node would then call the `execute()` function on the Klaster singleton contract on Base with the data. The contract would decode the transaction, cryptographically verify that the account owner was the one who signed it and proxy the contract call to the `swap()` function on Uniswap.
+
+Beyond this, the node would call the `execute()` function on the Klaster singleton contract on Optimism. The singleton would decode this as a payment operation and would transfer 1.1275 USDC to the Node wallet from the user wallet.
+
+With this, the user has sucesfully executed a transaction on Base, while paying for gas in USDC on Optimism!
+
+The node has made a minimum 10% profit on the transaction in USDC terms.
+
+### Slashing
+
+Once the node has commited itself to execute the transaction, it must do so. If the node is commited to execute the transaction and fails to do so until the `expiry` parameter in its cryptographically signed commitment, the user is able to commit the signed commitment, together with the signed transcation data to the Klaster staking contracts and the contracts will slash the offending node.
 
 ## Liveness Guarantees
 
